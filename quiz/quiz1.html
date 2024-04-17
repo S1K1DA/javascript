@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko-kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Q1. 사용자의 이름을 입력받고, 확인 버튼을 누르면 "OOO님 환영합니다"를 alert으로 출력하세요.</h3>
+    <!-- <div id="name-class" name="user-name"></div> -->
+    <input type="text" id="user-name" >
+    <button onclick="inputName()">확인</button>
+    <script>
+        function inputName() {
+            const getUserName = document.getElementById("user-name").value;  //input 에 값 가져올때는 무조건 벨루써주기
+            console.log(getUserName);
+            alert( getUserName+"님 환영합니다.");
+        }
+
+        //1. prompt 를 활용
+        // const q1Name = prompt("이름을 입력하세요")
+        // alert(q1Name + "님 환영합니다.")
+
+    </script>
+    <hr>
+
+    <h3>Q2. 몇단을 출력할지 입력받고, 확인 버튼을 누르면 innerHTML을 활용해 구구단의 합계를 div 태그에 출력하세요.</h3>
+    <input type="text" id="input-gugudan">
+    <button onclick="inputGugudan()">확인</button>
+    <div id="gugudan"></div>
+
+    <script>
+        function inputGugudan(){
+        // 사용자가 입력한 단 가져오기
+        const inputNum = document.getElementById("input-gugudan").value;
+        const getgugudanNumber = document.getElementById("gugudan");
+
+        // 입력한 구구단의 합계
+        let sum = 0;
+        for(let i = 1; i<10; i++) {
+            sum = sum + (inputNum*i);
+        }
+        // div에 합계값 출력
+        getgugudanNumber.innerHTML =  sum;
+    }
+    </script>
+
+    <hr>
+
+    <h3>Q3. 사용자의 이름과 나이를 출력입력 받고, 확인 버튼을 누르면
+        innerHTML을 활용해 div 태그에 환영 메시지를 출력하세요.</h3>
+    <p>18세 미만 : "OOO님, 안녕하세요! 미성년자 분이시군요."</p>
+    <p>18세 이상 : "OOO님, 안녕하세요! 성인 분이시군요."</p>
+    <p style="color: red;">※ 단, 나이에 숫자를 입력하지 않을 경우 "나이를 유효한 숫자로 입력하세요." 출력</p>
+    <p style="color: red;">※ isNaN(나이)을 활용하여 숫자인지 확인할 수 있습니다.</p>
+    <input type="text" id="input-Name">
+    <input type="text" id="input-Age">
+    <button onclick="ageCheck()">확인</button>
+    <div id="welcome"></div>
+    
+    <script>
+        function ageCheck() {
+            const getName = document.getElementById("input-Name").value;
+            const getAge = document.getElementById("input-Age").value;
+            const welcome = document.getElementById("welcome");
+
+            // 문자면 트루 , 숫자면 flase
+            console.log(isNaN(getAge));
+
+            if(!isNaN(getAge)) {
+                if(getAge >= 18) {
+                    welcome.innerHTML = getName + "님 안녕하세요! 성인 분이시군요"
+                } else if(getAge < 18) {
+                    welcome.innerHTML = getName + "님 안녕하세요! 미성년자 분이시군요"
+                }
+                
+            } else {
+               welcome.innerHTML = "나이를 유효한 숫자로 입력하세요"
+            //    welcome.style.color = "red"
+            }
+
+        }    
+        
+    </script>
+
+
+    <hr>
+    
+
+
+
+    <h3>Q4. 사용자로부터 숫자를 하나 입력받아 확인 버튼을 누르면
+        홀수인지 짝수인지 판별하고, inerrHTML을 활용해 div 태그에 출력하세요.
+    </h3>
+    <input type="text" id="q4-number">
+    <button onclick="numberCheck()">확인</button>
+    <div id="number"></div>
+    <p>출력 : 입력한 숫자는 짝수입니다.</p>
+    <p>출력 : 입력한 숫자는 홀수입니다.</p>
+    <p style="color: red;">※ 홀수는 빨간색, 짝수는 파란색으로 출력</p>
+
+
+    <script>
+        function numberCheck() {
+            const inputNumber = document.getElementById("q4-number").value;
+            const resultMsg = document.getElementById("number");
+            if(inputNumber % 2 == 0) {
+                resultMsg.innerHTML = "입력한 숫자는 짝수입니다."
+                resultMsg.style.color = "blue"
+            } else {
+                resultMsg,innerHTML = "입력한 숫자는 홀수입니다."
+                resultMsg.style.color = "red"
+            }
+        }
+
+
+
+    </script>
+
+    <hr>
+</body>
+</html>

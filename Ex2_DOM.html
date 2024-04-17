@@ -13,14 +13,48 @@
     <div class="box-class" name="box-name">Box3</div>
     <div id="box-4" name="box-name">Box4</div>
 
-    <input type="text" id="input-number" value="" placeholder="숫자 입력">
-    <button onclick="checkNumber()">전송</button>
+    <input type="hidden" id="hidden-value" value="asdf">
+
+
+    <input type="text" id="second-number" placeholder="숫자 입력">
+    <input type="text" id="input-number" value="10" placeholder="숫자 입력">
+    <button onclick="add()">덧셈</button>
+    <div id="result-msg">0</div>
+
+    <!-- <button onclick="checkNumber()">전송</button> -->
+
+    <br>
+    <script>
+        function add() {
+            // parseInt : 정수로 형변환 해주는 함수
+            const firstNumber = parseInt(document.getElementById("input-number").value)
+            const secondNumber = parseInt(document.getElementById("second-number").value)
+            const resultMsg = document.getElementById("result-msg");
+
+            console.log(typeof(firstNumber)); // 데이터 타입 확인
+            console.log(typeof(secondNumber)); 
+
+            if(firstNumber+secondNumber >=50) {
+                resultMsg.style.color = "green";
+                resultMsg.innerHTML = "50보다 크거나 같습니다.";
+            } else {
+                resultMsg.style.color = "red";
+                resultMsg.innerHTML = "50보다 작습니다.";
+            }
+
+            // resultMsg.innerHTML = firstNumber+secondNumber;
+
+
+        }
+    </script>
 
 
     <script>
         function checkNumber() {
-            const inputNumber = document.getElementById("input-number");    
-            console.log(inputNumber.value);
+            const inputNumber = document.getElementById("input-number").value;   
+            const hiddenValue = document.getElementById("hidden-value") .value;
+            console.log(inputNumber); // 초기값 : 10 or 사용자가 입력한 값
+            console.log(hiddenValue); // 초기값 : asdf
             }
 
     </script>
@@ -76,7 +110,7 @@
         console.log(getBoxId.textContent + "textContent 사용");
         console.log(getBoxId.outerHTML + "outerHTML 사용");
         console.log(getBoxId.outerText + "outerText 사용");
-
+g
         // 2. write
         document.write(getBoxId);  // 화면 출력
 
