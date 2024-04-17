@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="./Ex1_var.js"></script>
+</head>
+<body>
+    <!-- 인라인 방식 -->
+    <button onclick="alert('Hello, World!!')">클릭</button>
+
+    <button onclick="btnClick()">internal</button>
+
+    <button onclick="externalClick()">external</button>
+
+    <br><br>
+
+    <!-- 변수 -->
+    <script>
+        var a = "var 변수";
+        let b = "let 변수";
+        const c = "const 변수";
+
+        console.log(a);
+        console.log(b);
+        console.log(c);
+    </script>
+    
+</body>
+</html>
+<!-- internal 방식 -->
+<!-- internal 방식은 body태그 또는 html 태그가 끝나는 곳에 작성하는것이 좋음 -->
+
+<script>
+
+    function btnClick() {
+        alert('internal 방식입니다.')
+    }
+</script>
