@@ -19,6 +19,7 @@
 
     <!-- 변수 -->
     <script>
+        // 차이점1 :  중복 선언 가능,  let , const 중복 선언 불가
         var a = "var 변수";
         let b = "let 변수";
         const c = "const 변수";
@@ -26,6 +27,44 @@
         console.log(a);
         console.log(b);
         console.log(c);
+
+        var a = "var 중복 선언";
+        // let b = "let 중복 선언";
+        // const c = "const 중복 선언";
+
+        console.log(a);
+
+        function example() {
+            var a2 = 10;
+            let b2 = 20;
+            const c2 = 30;
+
+            if(true) {
+                var a2 = 100; // 함수 스코프
+                let b2 = 200; // 블록 스코프
+                const c2 = 300; // 블록 스코프
+
+                console.log("if문 : ", a2, b2, c2);
+            }
+
+            console.log("if문 밖 : ", a2, b2, c2);
+
+        }
+
+        example();
+
+        // 차이점-3 : 호이스팅 여부
+        console.log(a3); // undefined
+        var a3 = "var 변수";
+        console.log(a3);
+
+        console.log(b3); // ReferenceError
+        let b3 = "let 변수";
+        console.log(b3);
+
+
+
+        
     </script>
     
 </body>
