@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <h3>Q1. 입력 받은 값이 0 또는 12 이상일 경우, </h3>
+     <h3>  “값이 너무 크거나 작습니다.”를 출력 하시오.</h3>
+     <input type="text" id="q1-num">
+     <button onclick="inputNum()">확인</button>
+     <div id="number"></div>
+
+     <script>
+        function inputNum() {
+            const getNumber = document.getElementById("q1-num").value;
+            const Number = document.getElementById("number");
+            
+            if(getNumber == 0 || getNumber >= 12) {
+                Number.innerHTML = "값이 너무 크거나 작습니다."
+            }
+        
+        }
+
+     </script>
+
+     <hr>
+     <br><br>
+
+     <h3>Q2. 입력 받은 월에 따라 계절을 출력 하시오.</h3>
+     <pre>
+        1. 스캐너로 사용자로부터 몇 월인지 입력 받으세요.
+        2. 해당하는 계절과 출력 메시지는 아래와 같습니다.
+            3, 4, 5 : 봄
+            6, 7, 8 : 여름
+            9, 10, 11 : 가을
+            12, 1, 2 : 겨울
+            그 외 : 해당하는 계절이 없습니다.
+        ex) 1을 입력 받을 경우 “겨울” 출력
+        3. 위의 예시를 활용하여 OR 연산자 또는 AND 연산자를 활용하여 문제를 풀어보세요
+     </pre>
+
+     <input type="text" id="q2-num">
+     <button onclick="inputSeason()">확인</button>
+     <div id="season"></div>
+
+     <script>
+        function inputSeason() {
+            const inputNum = document.getElementById("q2-num").value;
+            const Season = document.getElementById("season");
+
+            if(inputNum >=3 && inputNum <=5) {
+                Season.innerHTML = "봄 입니다.";
+            } else if(inputNum >=6 && inputNum <= 8) {
+                Season.innerHTML = "여름 입니다.";
+            } else if(inputNum >=9 && inputNum <= 11) {
+                Season.innerHTML = "가을 입니다.";
+            } else if(inputNum <= 2 || inputNum == 12) {
+                Season.innerHTML = "겨울 입니다.";
+            } else {
+                Season.innerHTML = "해당하는 계절이 없습니다";
+            }
+
+        }
+
+     </script>
+
+    
+</body>
+</html>
