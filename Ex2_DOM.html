@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box-class">Box1</div>
+    <div class="box-class">Box2</div>
+    <div class="box-class" name="box-name">Box3</div>
+    <div id="box-4" name="box-name">Box4</div>
+
+    <input type="text" id="input-number" value="" placeholder="숫자 입력">
+    <button onclick="checkNumber()">전송</button>
+
+
+    <script>
+        function checkNumber() {
+            const inputNumber = document.getElementById("input-number");    
+            console.log(inputNumber.value);
+            }
+
+    </script>
+
+
+
+
+
+
+
+    <script>
+        // id로 HTML 요소 가져오기 (1개의 요소만)
+        const getBoxId = document.getElementById("box-4");
+        console.log(getBoxId);
+
+        // tag로 HTML 요소 가져오기  
+        const getBoxTag = document.getElementsByTagName("div");
+        console.log(getBoxTag);
+
+        for (let i = 0; i < getBoxTag.length; i++) {
+            console.log(getBoxTag[i]);
+        }
+
+        // class로 HTML 요소 가져오기
+        const getBoxClass = document.getElementsByClassName("box-class");
+        console.log(getBoxClass);
+
+        // name으로 HTML 요소 가져오기
+        const getBoxName = document.getElementsByName("box-name");
+        console.log(getBoxName);
+
+        // HTMLCollection vs NodeList
+        // 1. HTMLCollection은 값이 변경되면 바로 변경 가능(동적 컨텐츠)
+        // 2. NodeList는 값이 변경되도 없데이트 X (정적 컨텐츠)
+
+        //------------------------------------------------------------------------
+        // querySelector
+        const selectorClass = document.querySelector(".box-class");
+        console.log(selectorClass);
+
+        // querySelectorAll
+        const selectorAllClass = document.querySelectorAll(".bax-class");
+        console.log(selectorAllClass);
+
+        // --------------------------------데이터 출력
+        // 1. console.log
+        // getBoxId
+        console.log(getBoxId);
+        console.log("텍스트도 가능");
+        console.log(getBoxId + "문자를 이어 붙이면");
+
+        // textContent, outer를 활용해서 문자 이어붙이기 가능
+        console.log(getBoxId.textContent + "textContent 사용");
+        console.log(getBoxId.outerHTML + "outerHTML 사용");
+        console.log(getBoxId.outerText + "outerText 사용");
+
+        // 2. write
+        document.write(getBoxId);  // 화면 출력
+
+        // 3. alert("내용")
+      //  alert(getBoxId);    // 팝업 출력
+
+        // 4. innerHTML = "내용";
+        getBoxId.innerHTML = "내용을 변경했습니다.";
+
+        //---------------------------------------------------------------
+        // 1. confirm
+        const question = confirm("진행하시겠습니까?");
+        console.log(question);
+
+        // 2. prompt
+        const questionText = prompt("당신의 이름은 무엇입니까?");
+        console.log(questionText);
+
+    </script>
+
+</body>
+
+</html>
