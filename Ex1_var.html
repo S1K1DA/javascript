@@ -51,16 +51,31 @@
 
         }
 
-        example();
+        example(); // 함수호출
 
         // 차이점-3 : 호이스팅 여부
+        // var은 생성 단계(변수 선언) -> 실행 단계(변수 초기화)를 거치기 때문에
+        //에러가 발생하지 않음
+        // * 자바스크립트의 기본값은 undefined
         console.log(a3); // undefined
         var a3 = "var 변수";
         console.log(a3);
 
-        console.log(b3); // ReferenceError
+
+        // let, const는 생성 단계(변수 선언)만 거치기 떄문에 에러가 발생함
+        // 초기화가 되지 않았기 때문에
+        // ReferenceError: Cannot access 'b3' before initialization
+        // ReferenceError: 초기화 전에 'b3' 에 액세스할 수 없습니다.
+        // console.log(b3); // ReferenceError
         let b3 = "let 변수";
         console.log(b3);
+
+        // 차이점-4 : const는 상수다
+        const c3 = "const 변수";
+        console.log(c3);
+
+        c3 = "값 변경"; 
+        console.log(c3);
 
 
 
