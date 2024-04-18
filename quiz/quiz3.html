@@ -49,7 +49,7 @@ ex. 사용자가 100을 입력하면 1~100에서 3과 5의 공배수 출력  -->
         
         for(let i = 0; i <= getMultiple; i++) {
             const getMultiple = i;
-            if(getMultiple%3 == 0 && getMultiple%5 == 0) {
+            if(getMultiple%3 === 0 && getMultiple%5 === 0) {
                 Multiple.innerHTML += "3과5의 공배수 : " + getMultiple +"<br>";
             }
         }
