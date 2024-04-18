@@ -93,7 +93,7 @@ ex. 사용자가 100을 입력하면 1~100에서 3과 5의 공배수 출력  -->
    <input type="text" id="q4-kor" placeholder="국어 점수를 입력하세요.">
    <input type="text" id="q4-eng" placeholder="영어 점수를 입력하세요.">
    <input type="text" id="q4-mat" placeholder="수학 점수를 입력하세요.">
-   <input type="text" id="q4-mul" placeholder="과학 점수를 입력하세요.">
+   <input type="text" id="q4-sci" placeholder="과학 점수를 입력하세요.">
    <br>
    <button onclick="inputSum()">합계 출력</button>
    <div id="numbersum"></div> <!-- 합계가 출력되는 div -->
@@ -107,18 +107,18 @@ ex. 사용자가 100을 입력하면 1~100에서 3과 5의 공배수 출력  -->
         const Numberkor = document.getElementById("q4-kor").value;
         const Numbereng = document.getElementById("q4-eng").value;
         const Numbermat = document.getElementById("q4-mat").value;
-        const Numbermul = document.getElementById("q4-mul").value;
+        const Numbersci = document.getElementById("q4-sci").value;
         const Numbersum = document.getElementById("numbersum");
-        Numbersum.innerHTML = parseInt(Numberkor) + parseInt(Numbereng) + parseInt(Numbermat) + parseInt(Numbermul);
+        Numbersum.innerHTML = parseInt(Numberkor) + parseInt(Numbereng) + parseInt(Numbermat) + parseInt(Numbersci);
     }
 
     function inputAvg() {
         const Numberkor = document.getElementById("q4-kor").value;
         const Numbereng = document.getElementById("q4-eng").value;
         const Numbermat = document.getElementById("q4-mat").value;
-        const Numbermul = document.getElementById("q4-mul").value;
+        const Numbersci = document.getElementById("q4-sci").value;
         const Numberavg = document.getElementById("numbersum");
-        Numberavg.innerHTML = (parseInt(Numberkor) + parseInt(Numbereng) + parseInt(Numbermat) + parseInt(Numbermul))/4;
+        Numberavg.innerHTML = (parseInt(Numberkor) + parseInt(Numbereng) + parseInt(Numbermat) + parseInt(Numbersci))/4;
     }
 
    </script>
