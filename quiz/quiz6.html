@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button id="btn">버튼을 클릭 해주세요.</button>
+    <p id="output"></p>
+
+    <script>
+        const btn = document.getElementById("btn");
+        const output = document.getElementById("output");
+        let flag = true;
+
+        btn.addEventListener('click', function () {
+
+            if (flag) {
+                flag = false;
+                btn.innerText = "클릭 되었습니다";
+                output.innerHTML = "버튼이 클릭 되었습니다";
+            } else {
+                flag = true;
+                btn.innerText = "취소 되었습니다";
+                output.innerHTML = "버튼이 취소 되었습니다";
+            }
+        });
+    </script>
+
+
+
+
+
+
+
+</body>
+
+</html>
