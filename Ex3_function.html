@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="argsTest(true)">버튼</button>
+    <button onclick="argsTest2(1, 2, 3, 4, 5, 'abs')">arguments 클릭</button>
+    <button onclick="argsTest3(1, 2, 3, 4, 5, 'abs')">가변인자 클릭</button>
+    <div id="argsResult"></div>
+    <script>
+        // 가변인자 : 여러개의 매개변수를 배열로 받아서 저장
+        function argsTest3(...args) {
+            const result = document.getElementById("argsResult");
+            console.log("가변인자 : " + args);
+            for (let i = 0; i < args.length; i++) {
+                result.innerHTML += args[i];
+            }
+
+            // result.innerHTML = value1 + " " + value2;
+        }
+
+        // 유사배열 -> 실제로는 배열이 아님 (ㅋㅋ 배열인척함)
+        // arguments : 함수마다 내부적으로 존재하는 배열 객체
+        // 인자값의 개수와 상관 없이 배열에 담아서 저장
+        function argsTest2(value1, value2) {
+            const result = document.getElementById("argsResult");
+
+            console.log("arguments : " + arguments);
+
+            for (let i = 0; i < arguments.length; i++) {
+                result.innerHTML += arguments[i];
+            }
+
+            // result.innerHTML = value1 + " " + value2;
+        }
+
+        // 매개변수보다 많은 데이터가 전달되면 초과된 데이터는 무시
+        // 매개변수보다 적은 데이터가 전달되면 undefined가 발생
+        argsTest(10, 20);
+
+        function argsTest(value1, value2) {
+            const result = document.getElementById("argsResult");
+            console.log("일반 함수");
+
+
+            // result.innerHTML = value1 + " " + value2;
+
+        }
+
+        // 2. 익명 함수
+        // 한번 사용하는 기능이 필요할 때 주로 사용됨
+        // add();
+        const add = function(num1, num2) {
+            console.log(num1 + num2)
+        };
+
+        add(10, 20);
+
+        // 3. 화살표 함수
+        // 코드 라인 줄이기 위해서 사용
+        const add2 = (num1, num2) => console.log(num1+num2);
+        add2(20, 30);
+
+        const add3 = (num1, num2) => num1+num2;
+        console.log(add3(30,40));
+
+
+        // 4. 생성자 함수
+        // 관례적으로 생성자 함수는 앞 글자를 대문자로 표시
+        // 객체를 재사용하기 위해서 사용
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+            this.walk = function() {
+                // console.log("걷는중");
+                console.log("생성자 함수");
+                return "걷는중";
+            }
+
+            // console.log(name + age);
+        }
+
+        // person("시키", 19);
+        const p1 = new Person('시키', 19);
+        const p2 = new Person('은식이', 20);
+        console.log(p1);
+        console.log(p2);
+
+        console.log(p1.walk());
+        // p1.walk();
+
+        // 5. 내부 함수
+        // 함수 안에 함수가 있는 구조
+        function outerFunc() {
+            let number = 10;
+
+            console.log("outer 함수 실행됨");
+
+            function innerFunc() {
+                console.log("number 값 : " + number);
+            }
+            innerFunc();
+            console.log("outer 함수 종료")
+        }
+
+        outerFunc();
+
+        // 6. 재귀 함수
+        // 자기 자신을 호출하는 구조를 가진 함수
+        function recursive(count) {
+            if(count ===0 ) {
+                console.log("카운트가 종료되었습니다.");
+            } else {
+                console.log("카운트 : " + count);
+                recursive(count-1);
+            }
+        }
+
+        recursive(3);
+
+
+        function getFactorial(num) {
+            if(num === 0 ) {
+                return 1;
+            } else {
+                return num*getFactorial(num-1);
+            }
+
+        }
+
+        console.log(getFactorial(3));
+
+
+
+        // 7. 콜백 함수
+        // 매개변수의 자리에 함수가 들어가는 구조
+        // 비동기 프로그래밍을 할 때 자주 사용됨
+        setTimeout(function() {
+            console.log("5초가 지났습니다.");
+        }, 5000);
+        console.log("ASD");
+
+
+        function first(callback) {
+            console.log("fist 함수 실행됨");
+
+            callback();
+        }
+
+        first(function() {
+            console.log("second 함수 실행됨");
+        });
+
+
+        // 다른 방식
+        function firstFunc(callback) {
+            console.log("firstFunc 함수 실행됨");
+            callback();
+        }
+
+        function secondFunc() {
+            console.log("secondFunc 함수 실행됨");
+        }
+
+        firstFunc(secondFunc);
+
+    </script>
+
+</body>
+
+</html>
