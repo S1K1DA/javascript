@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="handlerTest1()">이벤트 핸들러-1</button>
+    <p id="result-1"></p>
+
+    <script>
+        function handlerTest1() {
+            const result = document.getElementById("result-1");
+            result.innerHTML = "핸들러1 실행";
+        }
+    </script>
+
+
+    <hr>
+
+    <button id="btn-2">이벤트 핸들러-2</button>
+    <p id="result-2"></p>
+
+    <script>
+            const btn2 = document.getElementById("btn-2");
+            const result2 = document.getElementById("result-2");
+
+            btn2.onclick = function() {
+                result2.innerHTML = "핸들러2 실행"
+            }
+        
+    </script>
+
+    <hr>
+    <button id="btn-3">이벤트 리스너</button>
+    <p id="result-3"></p>
+    <script>
+        const btn3 = document.getElementById("btn-3");
+        const result3 = document.getElementById("result-3");
+
+        btn3.addEventListener('click', function() {
+            result3.innerHTML = "이벤트 리스너 실행"
+        });
+    </script>
+
+    <hr>
+    <button id="btn-4">dblclick</button>
+    <p id="result-4"></p>
+
+    <script>
+        const btn4 = document.getElementById("btn-4");
+        const result4 = document.getElementById("result-4"); 
+
+
+        btn4.addEventListener('dblclick', function() {
+            result4.innerHTML = "이벤트 발생!"
+        });
+    </script>
+
+    <hr>
+    <div style="border: 1px solid black; width: 200px; height: 200px;" id="div-area"></div>
+    <script>
+        const divArea = document.getElementById("div-area");
+
+        divArea.addEventListener('contextmenu', function() {
+            // alert("우클릭 발생!");
+
+            // 컨텍스트 메뉴 표지 방지(우클릭 방지)
+            event.preventDefault();
+        })
+    </script>
+
+    <hr>
+    <input type="text" id="my-input" maxlength="10">
+    <button id="button-5">클릭</button>
+    <div id="result-5"></div>
+    <script>
+        const myInput = document.getElementById("my-input");
+        const result5 = document.getElementById("result-5"); 
+        const button5 = document.getElementById("button-5")
+        let keydownTime;
+
+        myInput.addEventListener('keydown', function() {
+            if(!keydownTime) {
+                keydownTime = new Date();
+                result5.innerHTML = "키를 누른 시간 : " + keydownTime;
+            }
+        })
+
+        
+        myInput.addEventListener('keyup', function() {
+            const keyupTime = new Date();
+            const duration = keyupTime - keydownTime;
+
+            result5.innerHTML = "키를 누르고 있던 시간 : " + duration + "ms";
+
+            keydownTime = null;
+        })
+        
+        
+        
+        button5.addEventListener('click', function() {
+            alert("클릭 되었습니다!");
+        });
+
+
+        // 엔터치면 확인됨
+        // myInput.addEventListener('keyup', function(event) {
+        //     result5.innerHTML = "키가 눌렸습니다" + event.keyCode;
+
+        //     if(event.keyCode === 13) {
+        //         button5.click();
+        //     }
+
+        // });
+    </script>
+
+    <hr>
+    <input type="password" id="input-password" onkeyup="validatePassword(this.value)"/>
+    <div id="result-6"></div>
+    <script>
+        let isValid;
+        const result6 = document.getElementById("result-6");
+
+        function validatePassword(password) {
+            console.log(password);
+
+            // 소문자, 대문자, 숫자를 포함한 6자리 이상 12자리 이하
+            const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,12}$/;
+     
+
+
+            isValid = pattern.test(password);
+            // result6.innerHTML = "입력한 비밀번호가 유효한가요?." + isValid;
+
+            if(isValid) {
+                result6.innerHTML = "사용할 수 있는 비밀번호입니다.";
+                result6.style.color = "green";
+            } else {
+                result6.innerHTML = "사용할 수 없는 비밀번호입니다.";
+                result6.style.color = "red";
+            }
+
+
+
+
+        }
+
+    </script>
+</body>
+</html>
