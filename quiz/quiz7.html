@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자 맞추기 게임</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            margin: 50px auto;
+            max-width: 300px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            width: 100px;
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 5px 10px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: unset;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #message {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        #resetGuess {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>숫자 맞추기 게임</h1>
+        <p>1부터 100 사이의 숫자를 맞춰보세요.</p>
+        <input type="number" id="guessInput">
+        <button id="submitGuess">제출</button>                                                                      
+        <p id="message"></p>
+        <button id="resetGuess" onclick="reload();">다시하기</button>
+    </div>
+</body>
+</html>
+
+<script>
+    // 랜덤 숫자
+    const randomNumber = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+
+    const submitGuess = document.getElementById("submitGuess");
+    const guessInput = document.getElementById("guessInput");
+    const message = document.getElementById("message");
+    let count = 0;
+
+    // 다시하기
+    function reload() {
+        location.reload();
+    }
+    
+    // - input에서 사용자가 엔터 누르면 제출 버튼 클릭될 수 있게 
+    guessInput.addEventListener('keyup', function() {
+        if(event.keyCode === 13 ) { // 13번 : 엔터
+            submitGuess.click(); // 클릭 이벤트 발생
+        }
+    })
+    
+    // 제출 버튼
+    submitGuess.addEventListener('click', function() {
+        // - 1부터 100 사이의 숫자를 입력 받음 
+        const guessInput = document.getElementById("guessInput").value;
+
+        // - 1부터 100 사이가 아닌 숫자를 입력 받으면 > 
+        // "1부터 100 사이의 숫자를 입력하세요." 출력 
+        if (guessInput < 1 || guessInput > 100) {
+            message.innerHtml = "1부터 100사이의 숫자를 입력하세요.";
+        } else {
+            setTimeout(function() {
+                message.innerHTML = "두구두구";
+            }, 0);
+            setTimeout(function() {
+                message.innerHTML = "두구두구.";
+            }, 500); // 0.5초
+            setTimeout(function() {
+                message.innerHTML = "두구두구..";
+            }, 1000); // 1초
+            setTimeout(function() {
+                message.innerHTML = "두구두구...";
+            }, 1500); // 1.5초
+            setTimeout(function() {
+                message.innerHTML = "두구두구....";
+            }, 2000); // 2초
+
+            setTimeout(function() {
+                // - 사용자가 입력한 숫자와 랜덤 숫자를 비교 
+                count++;
+
+                if(parseInt(guessInput) === randomNumber) {
+                    // - 숫자를 맞추면 몇번째 만에 숫자를 맞췄는지 알려줌 
+                    // > "축하합니다! 3번째 시도만에 숫자를 맞추셨습니다" 
+                    message.innerHTML = "축하합니다 ! " + count + "번째 시도만에 숫자를 맞추셨습니다.";
+                } else if(guessInput < randomNumber) {
+                    // > "숫자가 너무 작습니다. 다시 시도하세요" 
+                    message.innerHTML = "숫자가 너무 작습니다. 다시 시도하세요.";
+                } else {
+                    // > "숫자가 너무 큽니다. 다시 시도하세요" 
+                    message.innerHTML = "숫자가 너무 큽니다. 다시 시도하세요.";
+                }
+            }, 3000)
+        }
+
+    
+    })
+</script>
