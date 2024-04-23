@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="testObject()">클릭</button>
+    <div id="result-1"></div>
+    <script>
+        function testObject() {
+            const result = document.getElementById("result-1");
+
+            const member = {
+                name: "홍길동",
+                age: 19,
+                addr: "안양"
+            }
+
+            console.log(member);
+
+            result.innerHTML = "name : " + member.name + "<br>";
+            result.innerHTML += "age : " + member.age + "<br>";
+            result.innerHTML += "addr : " + member.addr + "<br>";
+
+            // Object
+            for (let name in member) {
+                // console.log(item);
+                // console.log(member.name);
+                console.log(member[name]);
+
+            }
+        }
+    </script>
+
+
+    <hr>
+    <button onclick="testObject2()">클릭</button>
+    <div id="result-2"></div>
+
+    <script>
+        function testObject2() {
+            const result = document.getElementById("result-2");
+
+            const car = {
+                name: "스포티지",
+                type: "SUV",
+                drive: function (des) {
+                    console.log(this);
+                    result.innerHTML = "종류 : " + this.name + "<br>";
+                    result.innerHTML = "타입 : " + this.type + "<br>";
+                    result.innerHTML = "목적지 : " + des + "<br>";
+                },
+                testDrive: (des) => {
+                    console.log(this);
+                    result.innerHTML = "종류 : " + this.name + "<br>";
+                    result.innerHTML = "타입 : " + this.type + "<br>";
+                    result.innerHTML = "목적지 : " + des + "<br>";
+                }
+            }
+
+            // car.drive("서울");
+            // car.testDrive("서울")
+
+            const object1 = {
+                name: "홍길동",
+                exec: function() {
+                    console.log(this.name);
+                    const name = "정은식";
+
+                    const innerArrow = () => {
+                        console.log(this.name);
+                    }
+
+                    innerArrow();
+                },
+                execArrow: () => {
+                    console.log(this.name);
+                }
+            }
+            object1.exec();
+            object1.execArrow();
+        }
+    </script>
+</body>
+
+</html>
