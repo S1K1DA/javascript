@@ -196,9 +196,64 @@
 
         elementNode.appendChild(textNode);
         result.appendChild(elementNode);
+
+       
     }
     
+    
 </script>
+<br><hr><br>
+
+<input type="text" id="userInput">
+    <button onclick="add()">추가</button>
+    <ul id="list">
+
+    </ul>
+    <script>
+        // 1. 사용자가 입력한 값 가져오기
+        // 2. li 요소 생성
+        // 3. textNode 생성 (사용자가 입력한 값)
+        // 4. li 요소의 자식으로 textNode 추가
+        // 5. ul 요소의 자식으로 li 요소 추가
+        function add() {
+            // ABC
+            const userInput = document.getElementById("userInput");
+            const list = document.getElementById("list");
+
+            // <li>ABC</li>
+            const liElement = document.createElement("li");
+            liElement.innerHTML = userInput.value;
+
+            // 삭제 버튼 생성
+            // <button></button>
+            const deleteButton = document.createElement("button");
+            
+            // <button>X</button>
+            deleteButton.innerHTML = 'X';
+
+            deleteButton.addEventListener('click', function() {
+                // removeChild : 자식 요소 삭제
+                list.removeChild(liElement);
+            })
+
+            liElement.appendChild(deleteButton);
+
+
+            list.appendChild(liElement);
+
+            userInput.value = "";
+
+            
+
+        }
+
+
+    </script>
+</body>
+</html>
+
+
+
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
