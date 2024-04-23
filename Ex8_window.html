@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>window 객체 : 자바스크립트 최상위 객체</p>
+    <ol>
+        <li>BOM (Browser Object Model) : 브라우저의 주소창과 관련되어 있음 </li>
+        <li>DOM (Document Object Model) : 그외 나머지 다(HTML 요소) </li>
+    </ol>
+
+    <h3>window.open()</h3>
+    <button onclick="windowTest1()">실행</button>
+    <script>
+        function windowTest1() {
+            // window.open("https://www.naver.com", "네이버임", "width=500px; height=500px");
+            window.open("https://www.naver.com");
+        }
+    </script>
+
+
+    <hr>
+    <h3>타이머에 관련된 함수</h3>
+    <ol>
+        <li>setTimeout</li>
+        <li>setInterval</li>
+    </ol>
+    <button onclick="windowTest2()">실행</button>
+
+    <script>
+        function windowTest2() {
+            //     setTimeout(function() {
+            //         alert("2초가 지났습니다.")
+            //     }, 2000);
+            const newNaver = window.open("https://www.naver.com")
+            newNaver.alert("3초뒤 사라짐");
+
+            setTimeout(function () {
+                newNaver.close();
+            }, 3000);
+        }
+    </script>
+
+    <button onclick="windowTest3()">인터벌</button>
+    <div id="test-3"></div>
+    <script>
+        function windowTest3() {
+            const result = document.getElementById("test-3");
+
+            const intervalConle = setInterval(function () {
+                const date = new Date();
+                console.log(date);
+
+                result.innerHTML = date;
+            }, 1000);
+
+            setTimeout(function () {
+                clearInterval(intervalConle);
+            }, 10000);
+        }
+    </script>
+
+    <h3>BOM (Browser Object Model)</h3>
+    <ol>
+        <li>location 객체</li>
+        <li>screen 객체</li>
+        <li>navigator 객체</li>
+        <li>history 객체</li>
+    </ol>
+
+    <button onclick="location.href='https://www.naver.com'">로케이션1</button>
+    <button onclick="location.assign('https://www.naver.com')">로케이션2</button>
+    <button onclick="location.replace('https://www.naver.com')">로케이션3</button>
+
+
+    <hr>
+
+    <button onclick="console.log(screen)">스크린</button>
+    <button onclick="console.log(navigator)">네비게이터</button>
+    <button onclick="console.log(history)">히스토리</button>
+
+
+    <hr>
+    <h3>DOM(document Object Model)</h3>
+    <p>
+        노드(node) : HTML에 있는 각각의 태그 <br>
+        - 요소 노드(Element Node) : 태그 그 자체를 의미 <br>
+        - 텍스트 노드(Text Node) : 태그 안에있는 텍스트를 의미 <br>
+
+        - 텍스트 노드가 존재하는 요소 : div, a, h1, p, pre, span, ... <br>
+        ex)
+    <div>텍스트</div> , <a href="">텍스트</a> , <h1>텍스트</h1>
+    - 텍스트 노드가 존재하지 않는 요소 : img, input, br, ... <br>
+    ex) <img src="" alt="" />, <input type="text" />, <br />
+    </p>
+
+    <button onclick="createEle()">요소 생성</button>
+    <div id="result-3"></div>
+
+    <script>
+        function createEle() {
+            const result = document.getElementById("result-3");
+
+            // 방법 1
+            result.innerHTML = "<p>태그 생성중</p>";
+
+            // 방법 2
+            // document 메서드를 사용하여 요소 객체 생성
+
+            // const elementNode = <h3></h3>
+            const elementNode = document.createElement("h3");
+            // elementNode.style.color = "red"   
+
+            // const textNode = "안녕하세요";
+            const textNode = document.createTextNode("안녕하세요.");
+
+            // <h3>
+            // "안녕하세요"
+            // </h3>
+
+            elementNode.appendChild(textNode);
+            result.appendChild(elementNode);
+
+            // <img src=>
+            const img = document.createElement("img");
+
+            img.src = "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzA4MjRfMTMy%2FMDAxNjkyODQ1OTA3MDQy.zBqIGFCj6bp88rrITmjIv9y6OH70GIzHLad-Rg-qtOEg.5pFmuki5_o1M2xbS6FoOchEr46NGg0IAd7UsJeQlp3og.PNG.lesiemtimes%2Fimage.png&type=sc960_832";
+            img.width = "200";
+            img.height = "200";
+
+            result.appendChild(img);
+
+        }
+
+
+    </script>
+    <br>
+    <hr>
+    <!-- 
+        버튼을 클릭할 때 마다 span의 자식요소로 "안녕하세요"+숫자 생성
+            -> p태그
+            -> 색상은 blue
+            -> 폰트사이즈는 16px
+        ex) 안녕하세요1, 안녕하세요2, 안녕하세요3, 안녕하세요4, ...
+    
+    -->
+    <button onclick="craeteEle2()">요소 생성</button>
+    <div id="result-4">
+        <span id="childNode"></span>
+    </div>
+
+
+    <script>
+        let count = 0;
+
+        function craeteEle2() {
+            count++;
+
+            const result = document.getElementById("result-4");
+            const childresult = document.getElementById("childNode");
+
+            const elementNode = document.createElement("p");
+            elementNode.style.color = "blue"
+            elementNode.style.fontSize = "16px"
+
+            const textNode = document.createTextNode("안녕하세요." + count);
+
+            elementNode.appendChild(textNode);
+            childresult.appendChild(elementNode);
+
+
+        }
+
+    </script>
+
+    <hr>
+    <input type="text" id="input-text" placeholder="">
+    <button onclick="getText()">추가</button>
+<div>
+    <ul id="result-text"></ul>
+</div>
+
+<script>
+    function getText() {
+        const inputtext = document.getElementById("input-text").value;
+        const result = document.getElementById("result-text");
+
+
+        const elementNode = document.createElement("li");
+        const textNode = document.createTextNode(inputtext);
+
+        elementNode.appendChild(textNode);
+        result.appendChild(elementNode);
+    }
+    
+</script>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+
+</body>
+
+</html>
