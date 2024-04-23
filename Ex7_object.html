@@ -33,6 +33,13 @@
                 console.log(member[name]);
 
             }
+
+            console.log("name" in member);
+
+            with(member) {
+                console.log(name);
+                console.log(age);
+            }
         }
     </script>
 
@@ -77,14 +84,47 @@
 
                     innerArrow();
                 },
-                execArrow: () => {
-                    console.log(this.name);
-                }
+                // execArrow: () => {
+                //     console.log(this.name);
+                // }
             }
             object1.exec();
-            object1.execArrow();
+            // object1.execArrow();
         }
-    </script>
+
+        const member1 = {name:"유저1", age: 19, addr: "안양"};
+        const member2 = {name:"유저2", age: 45, addr: "서울"};
+        const member3 = {name:"유저3", age: 34, addr: "인천"};
+
+        let members = [member1, member2, member3];
+
+        console.log(members[2].addr);
+
+        let sum = 0;
+        let avg = 0;
+
+        for(let i=0; i<members.length; i++) {
+            members[i].getSum = function() {
+                return this.age
+            }
+            // members[i].getSum()
+            // sum += members[i].age;
+        }
+
+        for(let i=0; i<members.length; i++) {
+            console.log(members[i].getSum());
+        }
+
+        // avg = sum/members.length;
+        // console.log(sum);
+        // console.log(avg);
+
+
+
+
+
+
+</script>
 </body>
 
 </html>
