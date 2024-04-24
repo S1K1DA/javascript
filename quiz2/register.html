@@ -3,6 +3,8 @@
 <head>
   <title>간단한 홈페이지</title>
   <link rel="stylesheet" href="./main.css">
+  <script src="./register.js"></script>
+
 </head>
 <body>
   <header>
@@ -37,24 +39,29 @@
         </div>
         <div class="input-container">
           <label for="new-username">이름:</label>
-          <input type="text" id="new-username" name="new-username" required>
+          <input type="text" id="new-username" name="new-username" onkeyup="inputname()" required>
+          <div id="nametext"></div>
         </div>
 
         <div class="input-container">
             <label for="new-userid">아이디:</label>
-            <input type="text" id="new-userid" name="new-userid" required>
+            <input type="text" id="new-userid" name="new-userid" onkeyup="inputid()" required>
+            <div id="idtext"></div>
         </div>
           <div class="input-container">
             <label for="new-password">비밀번호:</label>
-            <input type="password" id="new-password" name="new-password" required>
+            <input type="password" id="new-password" name="new-password" onkeyup="inputpwd()" required>
+            <div id="pwdtext"></div>
           </div>
   
           <div class="input-container">
             <label for="confirm-password">비밀번호 확인:</label>
-            <input type="password" id="confirm-password" name="confirm-password" required>
+            <input type="password" id="confirm-password" name="confirm-password" onkeyup="inputpwd()" required>
+            <div id="pwd2text"></div>
           </div>
   
-          <button type="submit">회원가입</button>
+          <button type="submit" onclick="inputregister()">회원가입</button>
+          
         </form>
       </div>
   </section>

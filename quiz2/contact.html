@@ -3,6 +3,7 @@
 <head>
   <title>간단한 홈페이지</title>
   <link rel="stylesheet" href="./main.css">
+  <script src="./contact.js"></script>
   <style>
     #message-counter {
       margin-top: 0px;
@@ -46,10 +47,10 @@
         <input type="email" id="email" name="email" required>
         
         <label for="message">메시지:</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
+        <textarea id="message" name="message" rows="4" onkeyup="upmessage()" required></textarea>
         <p id="message-counter">0/500</p>
         
-        <button type="submit">전송</button>
+        <button type="button" onclick="inputcontact()">전송</button>
     </form>
   </section>
 
