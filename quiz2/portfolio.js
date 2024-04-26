@@ -30,7 +30,7 @@ function inputproject() {
     } else {
         titleNode.appendChild(texttitle);
         projectNode.appendChild(textproject);
-
+        
         result.appendChild(titleNode);
         result.appendChild(projectNode);
     }
